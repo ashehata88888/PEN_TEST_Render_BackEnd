@@ -1,0 +1,7 @@
+CREATE TABLE bls(
+id SERIAL PRIMARY KEY,
+bl_name VARCHAR (50) UNIQUE NOT NULL,
+bl_manager_name VARCHAR(30) NOT NULL,
+bl_manager_mail VARCHAR(50) NOT NULL,
+bu_id INTEGER NOT NULL REFERENCES bus(id)
+)

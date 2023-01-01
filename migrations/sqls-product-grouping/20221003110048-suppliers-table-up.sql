@@ -1,0 +1,6 @@
+CREATE TABLE suppliers(
+id SERIAL PRIMARY KEY,
+supplier_name VARCHAR(50) NOT NULL  ,
+bl_id INTEGER REFERENCES bls(id),
+bu_id INTEGER REFERENCES bus(id)
+)

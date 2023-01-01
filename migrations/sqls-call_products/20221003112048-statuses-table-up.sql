@@ -1,0 +1,4 @@
+CREATE TABLE statuses(
+id SERIAL PRIMARY KEY,
+status_name VARCHAR(30) NOT NULL
+)
