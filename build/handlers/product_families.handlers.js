@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePF = exports.updatePF = exports.getAllPFs = exports.getOnePF = exports.createPF = void 0;
+exports.deletePF = exports.updatePF = exports.getAllPFs = exports.getAllPFsBySupID = exports.getAllPFBySupId = exports.getOnePF = exports.createPF = void 0;
 const product_family_model_1 = __importDefault(require("../models/product_family.model"));
 const pfModel = new product_family_model_1.default();
 const createPF = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,6 +41,32 @@ const getOnePF = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getOnePF = getOnePF;
+const getAllPFBySupId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const pf = yield pfModel.getAllPFBySupId(req.params.id);
+        res.json([
+            // Message: ` product family was retrieved successfully`,
+            ...pf
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllPFBySupId = getAllPFBySupId;
+const getAllPFsBySupID = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const sup = yield pfModel.getAllPFBySupId(req.params.id);
+        res.json([...sup
+            // Message: ` the supplier Names was retrieved successfully`,
+            // data: { ...ac }
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllPFsBySupID = getAllPFsBySupID;
 const getAllPFs = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const pfs = yield pfModel.getAllPFs();

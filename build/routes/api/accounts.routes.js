@@ -27,6 +27,7 @@ const act = __importStar(require("../../handlers/accounts.handlers"));
 const authMiddle_1 = __importDefault(require("../../middleware/authMiddle"));
 const routes = (0, express_1.Router)();
 routes.post('/', authMiddle_1.default, act.createAccount);
+routes.get('/names/:id', authMiddle_1.default, act.getAllAccountNamesForOneUser);
 routes.get('/', authMiddle_1.default, act.getAllAccounts);
 routes.get('/:id', authMiddle_1.default, act.getOneAccount);
 routes.patch('/:id', authMiddle_1.default, act.updateAccount);

@@ -45,6 +45,21 @@ class ItemGroupModel {
             }
         });
     }
+    // get All item_group by product_Family
+    getAllItem_groupByPFID(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `SELECT * from item_groups WHERE product_family_id=($1)`;
+                const result = yield conn.query(sql, [id]);
+                conn.release();
+                return result.rows;
+            }
+            catch (err) {
+                throw new Error(`Unable to get this item_group id Error : ${err.message}`);
+            }
+        });
+    }
     // get all item_groups
     getAllItem_groups() {
         return __awaiter(this, void 0, void 0, function* () {

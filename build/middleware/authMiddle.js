@@ -16,7 +16,7 @@ const validateToken = (req, res, next) => {
         if (getAuthHeader) {
             const bearer = getAuthHeader.split(' ')[0].toLowerCase();
             const token = getAuthHeader.split(' ')[1];
-            // the tokey type must be 'bearer'
+            // the token type must be 'bearer'
             if (token && bearer === 'bearer') {
                 // the following if statement confirms the quality of the token which send from the header with the token already stored in .env file
                 const decoding = jsonwebtoken_1.default.verify(token, tokenE);

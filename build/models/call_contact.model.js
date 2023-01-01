@@ -75,12 +75,12 @@ $1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`;
             }
         });
     }
-    // delete one Call_contact by id
+    // delete one Call_contact by id I'll hold this method and replace it with another function as I need to delete all contact where activity_id = $1
     deleteCall_contact(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const conn = yield database_1.default.connect();
-                const sql = `DELETE FROM call_contacts WHERE id=($1) RETURNING *`;
+                const sql = `DELETE FROM call_contacts WHERE activity_id=($1) RETURNING *`;
                 const result = yield conn.query(sql, [id]);
                 conn.release();
                 return result.rows[0];

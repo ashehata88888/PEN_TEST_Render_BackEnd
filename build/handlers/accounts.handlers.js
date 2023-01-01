@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteAccount = exports.updateAccount = exports.getAllAccounts = exports.getOneAccount = exports.createAccount = void 0;
+exports.deleteAccount = exports.updateAccount = exports.getAllAccounts = exports.getAllAccountNamesForOneUser = exports.getOneAccount = exports.createAccount = void 0;
 const accounts_model_1 = __importDefault(require("../models/accounts.model"));
 const accountModel = new accounts_model_1.default();
 const createAccount = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,6 +41,19 @@ const getOneAccount = (req, res, next) => __awaiter(void 0, void 0, void 0, func
     }
 });
 exports.getOneAccount = getOneAccount;
+const getAllAccountNamesForOneUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const ac = yield accountModel.getAllAccountNamesForOneUser(req.params.id);
+        res.json([...ac
+            // Message: ` the account Names was retrieved successfully`,
+            // data: { ...ac }
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllAccountNamesForOneUser = getAllAccountNamesForOneUser;
 const getAllAccounts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const acs = yield accountModel.getAllAccounts();

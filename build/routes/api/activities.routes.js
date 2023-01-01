@@ -28,6 +28,8 @@ const authMiddle_1 = __importDefault(require("../../middleware/authMiddle"));
 const routes = (0, express_1.Router)();
 routes.post('/', authMiddle_1.default, act.createActivity);
 routes.get('/', authMiddle_1.default, act.getAllActivitys);
+routes.get('/history/:id', authMiddle_1.default, act.getAllActivityforOneUserId);
+routes.get('/superuser', authMiddle_1.default, act.getAllActivityforSuperUser);
 routes.get('/:id', authMiddle_1.default, act.getOneActivity);
 routes.patch('/:id', authMiddle_1.default, act.updateActivity);
 routes.delete('/:id', authMiddle_1.default, act.deleteActivity);

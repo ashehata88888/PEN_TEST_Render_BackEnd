@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteActivity = exports.updateActivity = exports.getAllActivitys = exports.getOneActivity = exports.createActivity = void 0;
+exports.deleteActivity = exports.updateActivity = exports.getAllActivitys = exports.getAllActivityforOneUserId = exports.getAllActivityforSuperUser = exports.getOneActivity = exports.createActivity = void 0;
 const activities_model_1 = __importDefault(require("../models/activities.model"));
 const activityModel = new activities_model_1.default();
 const createActivity = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,6 +41,32 @@ const getOneActivity = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.getOneActivity = getOneActivity;
+const getAllActivityforSuperUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const ac = yield activityModel.getAllActivityforSuperUser();
+        res.json([...ac
+            // Message: ` the account Names was retrieved successfully`,
+            // data: { ...ac }
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllActivityforSuperUser = getAllActivityforSuperUser;
+const getAllActivityforOneUserId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const ac = yield activityModel.getAllActivityforOneUserId(req.params.id);
+        res.json([...ac
+            // Message: ` the account Names was retrieved successfully`,
+            // data: { ...ac }
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllActivityforOneUserId = getAllActivityforOneUserId;
 const getAllActivitys = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const acts = yield activityModel.getAllActivitys();

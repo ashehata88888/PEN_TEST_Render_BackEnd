@@ -27,7 +27,7 @@ let db;
 if (ENV === 'dev') {
     db = new pg_1.Pool({
         host: POSTGRES_HOST,
-        database: POSTGRES_DB,
+        database: POSTGRES_DB_TEST,
         user: POSTGRES_USER,
         password: POSTGRES_PASSWORD,
         port: parseInt(POSTGRES_PORT),

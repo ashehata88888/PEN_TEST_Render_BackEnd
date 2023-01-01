@@ -28,6 +28,7 @@ const authMiddle_1 = __importDefault(require("../../middleware/authMiddle"));
 const routes = (0, express_1.Router)();
 routes.post('/', authMiddle_1.default, act.createItem_group);
 routes.get('/', authMiddle_1.default, act.getAllItem_groups);
+routes.get('/names/:id', authMiddle_1.default, act.getAllItem_groupByPFID);
 routes.get('/:id', authMiddle_1.default, act.getOneItem_group);
 routes.patch('/:id', authMiddle_1.default, act.updateItem_group);
 routes.delete('/:id', authMiddle_1.default, act.deleteItem_group);

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSup = exports.updateSup = exports.getAllSups = exports.getOneSup = exports.createSup = void 0;
+exports.deleteSup = exports.updateSup = exports.getAllSups = exports.getAllSuppliersByBLId = exports.getOneSup = exports.createSup = void 0;
 const supplier_model_1 = __importDefault(require("../models/supplier.model"));
 const supModel = new supplier_model_1.default();
 const createSup = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,6 +41,19 @@ const getOneSup = (req, res, next) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.getOneSup = getOneSup;
+const getAllSuppliersByBLId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const sup = yield supModel.getAllSuppliersByBLId(req.params.id);
+        res.json([...sup
+            // Message: ` the supplier Names was retrieved successfully`,
+            // data: { ...ac }
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllSuppliersByBLId = getAllSuppliersByBLId;
 const getAllSups = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const sups = yield supModel.getAllSups();

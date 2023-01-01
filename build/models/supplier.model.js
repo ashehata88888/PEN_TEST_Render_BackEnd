@@ -45,6 +45,21 @@ class SupplierModel {
             }
         });
     }
+    // get all Suppliers by bl1_id
+    getAllSuppliersByBLId(bl1_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `SELECT * from suppliers WHERE bl_id=($1)`;
+                const result = yield conn.query(sql, [bl1_id]);
+                conn.release();
+                return result.rows;
+            }
+            catch (err) {
+                throw new Error(`Unable to get this Supplier id Error : ${err.message}`);
+            }
+        });
+    }
     // get all suppliers
     getAllSups() {
         return __awaiter(this, void 0, void 0, function* () {

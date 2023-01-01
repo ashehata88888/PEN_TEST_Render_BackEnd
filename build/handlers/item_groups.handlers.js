@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem_group = exports.updateItem_group = exports.getAllItem_groups = exports.getOneItem_group = exports.createItem_group = void 0;
+exports.deleteItem_group = exports.updateItem_group = exports.getAllItem_groups = exports.getAllItem_groupByPFID = exports.getOneItem_group = exports.createItem_group = void 0;
 const item_group_model_1 = __importDefault(require("../models/item_group.model"));
 const item_groupModel = new item_group_model_1.default();
 const createItem_group = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,6 +41,19 @@ const getOneItem_group = (req, res, next) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.getOneItem_group = getOneItem_group;
+const getAllItem_groupByPFID = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const ig = yield item_groupModel.getAllItem_groupByPFID(req.params.id);
+        res.json([
+            // Message: ` item_group was retrieved successfully`,
+            ...ig
+        ]);
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.getAllItem_groupByPFID = getAllItem_groupByPFID;
 const getAllItem_groups = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const igs = yield item_groupModel.getAllItem_groups();

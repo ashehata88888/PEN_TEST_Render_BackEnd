@@ -45,6 +45,22 @@ class AccountModel {
             }
         });
     }
+    // get all accounts related to certain user
+    getAllAccountNamesForOneUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `SELECT id,account_name,account_area from accounts WHERE user_id=($1)`;
+                // select account_name from accounts where user_id = 10
+                const result = yield conn.query(sql, [id]);
+                conn.release();
+                return result.rows;
+            }
+            catch (err) {
+                throw new Error(`Unable to get the account Names for this user Error : ${err.message}`);
+            }
+        });
+    }
     // get all accounts
     getAllAccounts() {
         return __awaiter(this, void 0, void 0, function* () {

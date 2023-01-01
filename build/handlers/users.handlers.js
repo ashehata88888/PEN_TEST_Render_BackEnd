@@ -31,7 +31,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.authenticate = exports.deleteUser = exports.updateUser = exports.getAllUsers = exports.getOneUser = exports.createUser = void 0;
+exports.authenticate = exports.deleteUser = exports.updateUserPass = exports.updateUser = exports.getAllUsers = exports.getOneUser = exports.createUser = void 0;
 const user_model_1 = __importDefault(require("../models/user.model"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv = __importStar(require("dotenv"));
@@ -91,6 +91,20 @@ const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.updateUser = updateUser;
+const updateUserPass = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // const paramId = req.params.id as unknown as User
+        const user = yield userModel.updateUserPass(req.body);
+        res.json({
+            Message: ` the User Name "${user.user_name}" was updated successfully`,
+            data: Object.assign({}, user)
+        });
+    }
+    catch (err) {
+        next(err);
+    }
+});
+exports.updateUserPass = updateUserPass;
 const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield userModel.deleteUser(req.params.id);

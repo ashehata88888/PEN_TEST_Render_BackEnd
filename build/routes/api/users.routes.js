@@ -30,6 +30,7 @@ routes.post('/', act.createUser);
 routes.get('/', authMiddle_1.default, act.getAllUsers);
 routes.get('/:id', authMiddle_1.default, act.getOneUser);
 routes.patch('/:id', authMiddle_1.default, act.updateUser);
+routes.patch('/pass/:id', authMiddle_1.default, act.updateUserPass);
 routes.delete('/:id', authMiddle_1.default, act.deleteUser);
 routes.post('/authenticate', act.authenticate);
 exports.default = routes;

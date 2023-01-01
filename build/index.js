@@ -30,23 +30,13 @@ const routes_1 = __importDefault(require("./routes"));
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = (0, express_1.default)();
-const whiteList = ["http://localhost:3000/", "http://mydomain/",
-    // "https://www.google.com/"
-];
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error('Not allowed by CORS'), false);
-        }
-    },
-    optionsSuccessStatus: 200
+const allowedOrigins = ['http://localhost:3000', 'https://www.google.com/'];
+const options = {
+    origin: allowedOrigins
 };
-app.use((0, cors_1.default)(corsOptions));
+app.use((0, cors_1.default)(options));
 // app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.header("Access-Control-Allow-Origin", ['http://localhost:3000','https://www.google.com/']);
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   app.use('/api', routes)
 //   next();

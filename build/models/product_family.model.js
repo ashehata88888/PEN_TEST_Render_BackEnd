@@ -46,6 +46,39 @@ class ProductFamilyModel {
             }
         });
     }
+    // get All PF by supplier_id
+    getAllPFBySupplierId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `SELECT * from product_families WHERE supplier_id=($1)`;
+                const result = yield conn.query(sql, [id]);
+                conn.release();
+                return result.rows;
+            }
+            catch (err) {
+                throw new Error(`Unable to get this product family
+ id Error : ${err.message}`);
+            }
+        });
+    }
+    // get all product families based on supplier id
+    // get one BL by id
+    getAllPFBySupId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `SELECT * from product_families WHERE supplier_id=($1)`;
+                const result = yield conn.query(sql, [id]);
+                conn.release();
+                return result.rows;
+            }
+            catch (err) {
+                throw new Error(`Unable to get this product family
+   id Error : ${err.message}`);
+            }
+        });
+    }
     // get all PFs
     getAllPFs() {
         return __awaiter(this, void 0, void 0, function* () {

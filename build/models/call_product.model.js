@@ -75,12 +75,12 @@ $1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`;
             }
         });
     }
-    // delete one Call_product by id
+    // delete one Call_product by id I hold that method and replace it as delete CP where activity_id =$1
     deleteCall_product(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const conn = yield database_1.default.connect();
-                const sql = `DELETE FROM call_products WHERE id=($1) RETURNING *`;
+                const sql = `DELETE FROM call_products WHERE activity_id=($1) RETURNING *`;
                 const result = yield conn.query(sql, [id]);
                 conn.release();
                 return result.rows[0];

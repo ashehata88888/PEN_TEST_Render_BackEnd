@@ -6,10 +6,10 @@
   "scripts": {
     "test": "set ENV=test db-migrate --env test up -c 4 && jasmine-ts && db-migrate db:drop test",
     "dev": "nodemon ./src/index.ts",
-    "clean": "rimraf build/",
+    "clean": "npx rimraf build/",
     "migration:up": "db-migrate up -c 23",
     "migration:down": "db-migrate down -c 23",
-    "build": "yarn clean && npx tsc",
+    "build": "npm run clean && npx tsc",
     "start": "npm run build && node build/index.js",
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint . --ext .ts"

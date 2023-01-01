@@ -139,6 +139,22 @@ class UserModel {
             }
         });
     }
+    // udate one user by id
+    updateUserPass(u) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const conn = yield database_1.default.connect();
+                const sql = `UPDATE users SET 
+        password=$1 WHERE id=$2 RETURNING *`;
+                const result = yield conn.query(sql, [hashPass(u.password), u.id]);
+                conn.release();
+                return result.rows[0];
+            }
+            catch (err) {
+                throw new Error(`Unable to update this user Password Error : ${err.message}`);
+            }
+        });
+    }
     // delete one user by id
     deleteUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
