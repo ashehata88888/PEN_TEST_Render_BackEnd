@@ -14,7 +14,7 @@ const app: Application = express()
 const allowedOrigins = ['https://pen-test.onrender.com/'];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins
+  origin: "*"
 };
 app.use(cors(options));
 // app.use(function(req, res, next) {
