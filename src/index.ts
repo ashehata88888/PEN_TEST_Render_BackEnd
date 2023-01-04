@@ -46,11 +46,9 @@ app.use(express.json())
 //   next();
 // });
 
-// just to restart the cloud server
-// just to restart the cloud server
-// just to restart the cloud server
-// just to restart the cloud server
-
+//  just for restarting the clould server
+//  just for restarting the clould server
+//  just for restarting the clould server
 
 
 app.use('/api', routes)
