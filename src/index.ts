@@ -11,7 +11,7 @@ dotenv.config()
 const PORT = process.env.PORT || 3000
 
 const app: Application = express()
-const allowedOrigins = ['https://pen-test.onrender.com/'];
+const allowedOrigins = ['https://pen-test.onrender.com/','http://localhost:3000/'];
 
 const options: cors.CorsOptions = {
   origin: "*"
