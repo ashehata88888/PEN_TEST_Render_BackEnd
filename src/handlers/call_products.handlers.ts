@@ -55,7 +55,7 @@ export const deleteCall_product = async (req: Request, res: Response, next: Next
   try {
     const cp = await call_productModel.deleteCall_product(req.params.id as unknown as string)
     res.json({
-      Message: ` '${cp.id}'  Call_product was deleted successfully`,
+      Message: ` Call_product was deleted successfully`,
       data: { ...cp }
     })
   } catch (err) {

@@ -81,7 +81,7 @@ export const deleteActivity = async (req: Request, res: Response, next: NextFunc
   try {
     const act = await activityModel.deleteActivity(req.params.id as unknown as string)
     res.json({
-      Message: ` '${act.activity_type_id}'  Activity was deleted successfully`,
+      Message: ` '${req.params.id}'  Activity was deleted successfully`,
       data: { ...act }
     })
   } catch (err) {

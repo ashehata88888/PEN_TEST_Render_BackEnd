@@ -55,7 +55,7 @@ export const deleteCall_contact = async (req: Request, res: Response, next: Next
   try {
     const cc = await call_contactModel.deleteCall_contact(req.params.id as unknown as string)
     res.json({
-      Message: ` '${cc.contact_person}'  Call_contact was deleted successfully`,
+      Message: `Call_contact was deleted successfully`,
       data: { ...cc }
     })
   } catch (err) {
