@@ -48,10 +48,10 @@ export const getAllCompetitorsPerBLSupller = async (req: Request, res: Response,
     const comps = await compModel.getAllCompetitorsPerBLSupller(req.params.bl_id,req.params.supplier_id)
     // console.log('comps are ,,,,,',comps)
     
-    res.json({data:[
+    res.json([
       // Message: ` item_group was retrieved successfully`,
    ...comps 
-  ] })
+  ])
   } catch (err) {
     next(err)
   }
