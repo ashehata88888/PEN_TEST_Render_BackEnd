@@ -47,6 +47,24 @@ class CompetitorModel {
     }
   }
 
+    // get all competitors where BL id=  & Supplier id =
+    // bl_id:string,supplier_id:string
+    // id,competitor_name
+
+  async getAllCompetitorsPerBLSupller(bl_id:string ,supplier_id:string): Promise<competitor[]> {
+    try {
+      const conn = await db.connect()
+      const sql = `SELECT * from competitors WHERE bl_id=($1) AND supplier_id=($2)`
+      const result = await conn.query(sql,[bl_id,supplier_id])
+      conn.release()
+      return result.rows
+    } catch (err) {
+      throw new Error(`Unable to get these competitors Error : ${(err as Error).message}`)
+    }
+  }
+
+
+
   // udate one competitor by id
   async updateCompetitor(b: competitor): Promise<competitor> {
     try {

@@ -40,6 +40,23 @@ export const getAllCompetitors = async (req: Request, res: Response, next: NextF
   }
 }
 
+// req.query.id1 as unknown as number, req.params.id2 as unknown as number
+
+export const getAllCompetitorsPerBLSupller = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+ 
+    const comps = await compModel.getAllCompetitorsPerBLSupller(req.params.bl_id,req.params.supplier_id)
+    // console.log('comps are ,,,,,',comps)
+    
+    res.json({data:[
+      // Message: ` item_group was retrieved successfully`,
+   ...comps 
+  ] })
+  } catch (err) {
+    next(err)
+  }
+}
+
 export const updateCompetitor = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const comp = await compModel.updateCompetitor(req.body)
