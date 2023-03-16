@@ -6,11 +6,11 @@ class Market_sizeModel {
 async createMarket_size(b:Market_size): Promise<Market_size> {
     try {
       const conn = await db.connect()
-const sql = `INSERT INTO market_size(supplier_id,product_family_id,item_group_id,market_potential_id) VALUES (
-$1,$2,$3,$4) RETURNING *`
+const sql = `INSERT INTO market_size(supplier_id,product_family_id,market_potential_id) VALUES (
+$1,$2,$3) RETURNING *`
 
       const result = await conn.query(sql,
-        [b.supplier_id,b.product_family_id,b.item_group_id,b.market_potential_id])
+        [b.supplier_id,b.product_family_id,b.market_potential_id])
 
       conn.release()
 
@@ -50,8 +50,8 @@ $1,$2,$3,$4) RETURNING *`
   async updateMarket_size(b: Market_size): Promise<Market_size> {
     try {
       const conn = await db.connect()
-  const sql = `UPDATE market_size SET supplier_id=$1,product_family_id =$2,item_group_id =$3,market_potential_id =$4 WHERE id=$5 RETURNING *`
-      const result = await conn.query(sql, [b.supplier_id,b.product_family_id,b.item_group_id,b.market_potential_id,b.id])
+  const sql = `UPDATE market_size SET supplier_id=$1,product_family_id =$2,market_potential_id =$3 WHERE id=$4 RETURNING *`
+      const result = await conn.query(sql, [b.supplier_id,b.product_family_id,b.market_potential_id,b.id])
       conn.release()
       return result.rows[0]
     } catch (err) {

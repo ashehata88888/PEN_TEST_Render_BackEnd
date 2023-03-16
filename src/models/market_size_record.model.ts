@@ -6,11 +6,11 @@ class Market_size_recordModel {
 async createMarket_size_record(b:Market_size_record): Promise<Market_size_record> {
     try {
       const conn = await db.connect()
-const sql = `INSERT INTO market_size_records(egmed_consumption,total_consumption,competitor_id,item_qty1,item_status1_id,item_qty2,item_status2_id,market_size_id) VALUES (
-$1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`
+const sql = `INSERT INTO market_size_records(egmed_consumption,total_consumption,competitor_id,item_qty1,item_status1_id,item_qty2,item_status2_id,item_group_id,market_size_id) VALUES (
+$1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`
 
       const result = await conn.query(sql,
-        [b.egmed_consumption,b.total_consumption,b.competitor_id,b.item_qty1,b.item_status1_id,b.item_qty2,b.item_status2_id,b.market_size_id])
+        [b.egmed_consumption,b.total_consumption,b.competitor_id,b.item_qty1,b.item_status1_id,b.item_qty2,b.item_status2_id,b.item_group_id,b.market_size_id])
 
       conn.release()
 
@@ -50,8 +50,8 @@ $1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`
   async updateMarket_size_record(b: Market_size_record): Promise<Market_size_record> {
     try {
       const conn = await db.connect()
-  const sql = `UPDATE market_size_records SET egmed_consumption=$1,total_consumption=$2,competitor_id=$3,item_qty1=$4,item_status1_id=$5,item_qty2=$6,item_status2_id=$7,market_size_id=$8 WHERE id=$9 RETURNING *`
-      const result = await conn.query(sql, [b.egmed_consumption,b.total_consumption,b.competitor_id,b.item_qty1,b.item_status1_id,b.item_qty2,b.item_status2_id,b.market_size_id,b.id])
+  const sql = `UPDATE market_size_records SET egmed_consumption=$1,total_consumption=$2,competitor_id=$3,item_qty1=$4,item_status1_id=$5,item_qty2=$6,item_status2_id=$7,item_group_id=$8,market_size_id=$9 WHERE id=$10 RETURNING *`
+      const result = await conn.query(sql, [b.egmed_consumption,b.total_consumption,b.competitor_id,b.item_qty1,b.item_status1_id,b.item_qty2,b.item_status2_id,b.item_group_id,b.market_size_id,b.id])
       conn.release()
       return result.rows[0]
     } catch (err) {
