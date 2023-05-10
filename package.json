@@ -10,7 +10,7 @@
     "migration:up": "db-migrate up -c 23",
     "migration:down": "db-migrate down -c 23",
     "build": "npm install && npm run clean && npx tsc",
-    "start": "npm run build && node build/index.js",
+    "start": "node build/index.js",
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint . --ext .ts"
   },

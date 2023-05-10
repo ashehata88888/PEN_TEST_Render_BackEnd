@@ -22,8 +22,6 @@ app.use(cors(options));
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   app.use('/api', routes)
 //   next();
-//  test
-//  test
 // });
 
 // app.use(morgan('short'))
