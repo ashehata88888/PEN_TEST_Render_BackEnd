@@ -14,7 +14,7 @@ const app: Application = express()
 const allowedOrigins = ['https://ahmed-shehata-crm.onrender.com/','https://ahmed-shehata-crm.onrender.com/home','https://pen-test.onrender.com/','http://localhost:3000/'];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins
+  origin: "*"
 };
 app.use(cors(options));
 // app.use(function(req, res, next) {
