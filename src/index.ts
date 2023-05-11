@@ -11,10 +11,10 @@ dotenv.config()
 const PORT = process.env.PORT || 3000
 
 const app: Application = express()
-const allowedOrigins = ['https://pen-test.onrender.com/','http://localhost:3000/'];
+const allowedOrigins = ['https://ahmed-shehata-crm.onrender.com/','https://ahmed-shehata-crm.onrender.com/home','https://pen-test.onrender.com/','http://localhost:3000/'];
 
 const options: cors.CorsOptions = {
-  origin: "*"
+  origin: allowedOrigins
 };
 app.use(cors(options));
 // app.use(function(req, res, next) {
